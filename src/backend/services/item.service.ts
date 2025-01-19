@@ -52,8 +52,7 @@ export async function getAllItems() {
 
 export async function deleteItems(body: any) {
   try {
-    const parsedBody: any = itemInsertSchemas.parse(body);
-    const item = await db.delete(items).where(and(eq(items.type, parsedBody.type),eq(items.shoppingListId, parsedBody.shoppingListId)))
+    const item = await db.delete(items).where(and(eq(items.type, body.type),eq(items.shoppingListId, body.shoppingListId)))
         return item
     }catch(e) {
         return e;

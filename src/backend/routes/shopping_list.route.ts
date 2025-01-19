@@ -15,7 +15,6 @@ async function shoppingListRoute(server: FastifyInstance) {
     server.post('/:shopping_list_id/item', async (request, reply) => {
        
         try {
-        console.log("Add item to list", request.params["shopping_list_id"])            
         const result = await registerItemHandler(request, reply)
         return result
         }catch(e) {
@@ -26,7 +25,6 @@ async function shoppingListRoute(server: FastifyInstance) {
     server.get('/:shopping_list_id/item', async (request, reply) => {
        
         try {
-        console.log("get from list", request.params["shopping_list_id"])            
         const result = await getShoppingListItemsHandler(request, reply)
         return result
         }catch(e) {
@@ -34,7 +32,8 @@ async function shoppingListRoute(server: FastifyInstance) {
             return reply.send(500);
         }
     })
-    server.delete('/:shopping_list_id/item', async (request, reply) => {
+    server.delete('/:shopping_list_id/item/:type', async (request, reply) => {
+        console.log("Parameters", request.body)
         try {
         const result = await deleteItemHandler(request, reply)
         return result

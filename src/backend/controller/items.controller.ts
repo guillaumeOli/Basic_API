@@ -46,8 +46,7 @@ export async function getShoppingListItemsHandler(request: FastifyRequest, reply
 export async function deleteItemHandler(request: FastifyRequest, reply: FastifyReply) {
     
     try {
-        const body = request.body
-        const item = await deleteItems(body)
+        const item = await deleteItems({shoppingListId: request.params["shopping_list_id"], type: request.params["type"]})
         return reply.code(200).send(item)
     }catch(e){
         return reply.code(500).send(e)

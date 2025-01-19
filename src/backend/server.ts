@@ -2,6 +2,7 @@ import Fastify from "fastify";
 import fastifymysql from "@fastify/mysql"
 import {drizzle} from "drizzle-orm/mysql2"
 import * as dotenv from "dotenv"
+import cors from '@fastify/cors'
 
 import itemRoute from "./routes/item.route";
 import shoppingListRoute from "./routes/shopping_list.route";
@@ -14,14 +15,19 @@ export const db = drizzle(process.env.DATABASE_URL)
 
 
 function init_server() {
-    
+
     const server = Fastify({
       })     
     server.get('/healthcheck', async () => {
       return {status: "OK"}
     })
-
-    server.register(fastifymysql, {
+    server.register(require('@fastify/cors'), {
+        credentials: true,
+        strictPreflight: false,
+        origin: '*',
+        methods: ['GET', 'POST', 'PATCH', 'DELETE'],
+    });
+        server.register(fastifymysql, {
         connectionString: `${process.env.DATABASE_URL}`
     })
     server.register(shoppingListRoute, {prefix: 'api/shopping_list'})
