@@ -140,13 +140,13 @@ export function ShoppingList() {
       </ul>
       <h2>Available Products</h2>
       <ul className="available-products">
-        {availableProducts.map((product, index) => (
+        {availableProducts.length ? availableProducts.map((product, index) => (
           <li key={index} className="product-item">
             <strong>Type:</strong> {product.name} <br />
             <strong>Description:</strong> {product.description} <br />
             <strong>Price:</strong> ${product.price}
           </li>
-        ))}
+        )) : null}
       </ul>
     </div>
   );

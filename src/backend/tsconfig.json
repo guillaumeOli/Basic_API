@@ -4,6 +4,7 @@
     "moduleResolution": "node",
     "module": "commonjs",
     "outDir": "./dist",
+    "skipLibCheck": true,
   },
   "include": ["./**/*.ts"],
   "exclude": ["node_modules", "**/*.spec.ts"]

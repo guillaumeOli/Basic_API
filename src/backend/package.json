@@ -4,8 +4,7 @@
   "main": "index.js",
   "scripts": {
     "dev": "nodemon --watch ./ index.ts",
-    "build": "rimraf ./dist && tsc -p tsconfig.json",
-    "start": "npm run build && node dist/index.ts"
+    "start": "nodemon --watch ./ index.ts"
   },
   "keywords": [],
   "author": "",
@@ -27,7 +26,7 @@
   "devDependencies": {
     "@tsconfig/node18": "^18.2.4",
     "@types/node": "^22.10.5",
-    "drizzle-kit": "^0.30.1",
+    "drizzle-kit": "^0.30.2",
     "typescript": "^5.7.3"
   }
 }
