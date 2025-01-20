@@ -18,6 +18,9 @@ Dans l'interface du container:
 
 `create database fastify_db;`
 
+`use fastify_db;`
+
+
 Dans le terminal dans /src/backend:
 
 `npm i drizzle-kit`
