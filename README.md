@@ -1,4 +1,4 @@
-# 
+# Basic API
 
 Rename les deux .example.env en .env et changer les ports si besoin
 
